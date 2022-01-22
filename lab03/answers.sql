@@ -10,37 +10,43 @@ FROM users;
 
 
 -- Exercise 3
-
+SELECT id, first_name, last_name FROM users ORDER BY last_name;
 
 
 
 -- Exercise 4
-
+SELECT id, user_id, image_url FROM posts WHERE user_id = 26;
 
 
 
 -- Exercise 5
-
+SELECT id, user_id, image_url FROM posts WHERE user_id = 26 OR user_id = 12;
 
 
 
 -- Exercise 6
-
+SELECT count(*) FROM posts;
 
 
 
 -- Exercise 7
-
+SELECT user_id, count(*) FROM comments GROUP BY user_id ORDER BY count(*) DESC;
 
 
 
 -- Exercise 8
-
+SELECT posts.id, posts.image_url, posts.user_id, users.username, users.first_name, users.last_name FROM posts
+INNER JOIN users ON
+users.id = posts.user_id
+WHERE users.id = 26 OR users.id = 12;
 
 
 
 -- Exercise 9
-
+SELECT posts.id, posts.pub_date, following.following_id FROM posts
+INNER JOIN following ON
+posts.user_id = following.following_id WHERE following.user_id = 26
+;
 
 
 
@@ -50,17 +56,22 @@ FROM users;
 
 
 -- Exercise 11
-
+INSERT INTO bookmarks (id, post_id, user_id)
+VALUES (257, 219, 26);
 
 
 
 -- Exercise 12
+DELETE FROM bookmarks
+WHERE id = 257;
 
 
 
 
 -- Exercise 13
-
+UPDATE users
+SET email = "cyoung2022@gmail.com"
+WHERE id = 26;
 
 
 
